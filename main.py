@@ -24,36 +24,60 @@ def init():
                     "E Kopfschutz","E Ruestung","E Handschuhe", "E Stiefel"]
 
     #erstelle 72 Ruestungsobjekte: 24*3 = 72 gleichverteilt
-    for i in range(3):
-        for e in range(len(words)):
+    for i in range(len(words)):
+        for e in range(3):
             ruestungslist1.append([len(ruestungslist1),words[i],0,0,0,0,0,0,0,0])
 
 
     # erstelle weitere 72 Ruestungsobjekte, zuf�lligverteilt
 
     for i in range(72):
-        ruestungslist1.append([len(ruestungslist1),random.randint(0,len(words)),0,0,0,0,0,0,0])
-
+        ruestungslist1.append([len(ruestungslist1),words[random.randint(0,len(words)-1)],0,0,0,0,0,0,0])
+    
     for i in range(len(ruestungslist1)):
-        for e in range( len(ruestungslist1[i])):
-            print(ruestungslist1[e],' ')
+        print(ruestungslist1[i])
         print()    
-
+    
     for i in range(len(ruestungslist1)):
         doStats(ruestungslist1[i])
+        
     
-    
+
     for i in range(len(ruestungslist1)):
-        for e in range( len(ruestungslist1[i])):
-            print(ruestungslist1[e],' ')
-        print()    
+         print(ruestungslist1[i])
+         print() 
+  
+    print()
+    ruestungslist1=sortlist(ruestungslist1)
+    for i in range(len(ruestungslist1)):
+         print(ruestungslist1[i])
+         print() 
+  
+    #erstelle Charakter
     
-
-
-
-
-
-
+    char1 = [1,'Fav',50,50,5,10,5,10]
+    char2 = [1,'Udog',50,50,5,10,5,10]
+    fight(char1,char2)
+        
+       
+def sortlist(items):
+    # Die Tier-Reihenfolge, von der höchsten (S) bis zur niedrigsten (E)
+    tiers = {'S': 5, 'A': 4, 'B': 3, 'C': 3, 'D': 2, 'E': 1}
+    
+    # Sortiere die Items basierend auf dem zweiten Element (den Tier-Namen)
+    sorteditems = sorted(items, key=lambda x: tiers.get(x[1][0], 0), reverse=True)
+    
+    return sorteditems
+    
+    
+def sortTier(list,tierlist):
+    templist=[]
+    for i in range(len(tierlist)):
+        for e in range(len(list)):
+            if list[i][1][0] == tierlist[i]:
+                templist.append(list[i])                
+                
+    list=templist
 def doStats(ruestung):
     zzahl =0
     if ruestung[1][0] == 'S':
@@ -97,5 +121,51 @@ def givestat(ruestung, zahl):
             ruestung[4]=zahl
         if randzahl == 4:
             ruestung[5]=zahl    
+#0 id, 1 name,  2 atk, 3 def, 4 crt,5 spd, 6 intl, 7 lck
+
+def fight(char1,char2):
+    spw1 = random.randint(0,100)
+    spw2 = random.randint(0,100)
+    print(spw1)
+    print(spw2)
+    
+    while spw1 <= char1[7] and spw2<=char2[7]:
+        spw1 = random.randint(0,100)
+        spw2 = random.randint(0,100)
+        print('ups')
+     
+        
+
+       
+
+
+    if spw1 <= char1[7]:
+        print('first durch Glueck gewonnen')
+   elif spw2 <= char2[7]:
+        print('second durch Glueck geworden')
+    hp1=500
+    hp2=500
+    turn = 0
+    if char1[5]< char2[5]:
+        turn = 1
+        
+	if char1[5] == char2[5]:
+	    if random.randint(1,50)<50:
+	        turn=1
+	while hp1>0 and hp2>0:
+	       if turn = 0:
+	           turn=1
+	           hp2=hp-td()
+        
+
+
+def td(atk):
+    spw = random.randint(0,15)
+    atk=int(atk *(100-spw)/100)
+    return atk
+
+
+
+
 
 init()

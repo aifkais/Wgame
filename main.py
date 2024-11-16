@@ -141,22 +141,22 @@ def fight(char1,char2):
 
     if spw1 <= char1[7]:
         print('first durch Glueck gewonnen')
-   elif spw2 <= char2[7]:
+    elif spw2 <= char2[7]:
         print('second durch Glueck geworden')
     hp1=500
     hp2=500
     turn = 0
     if char1[5]< char2[5]:
         turn = 1
-        
-	if char1[5] == char2[5]:
+"""        
+    if char1[5] == char2[5]:
 	    if random.randint(1,50)<50:
 	        turn=1
-	while hp1>0 and hp2>0:
-	       if turn = 0:
+    while hp1>0 and hp2>0:
+	    if turn == 0:
 	           turn=1
 	           hp2=hp-td()
-        
+"""        
 
 
 def td(atk):
